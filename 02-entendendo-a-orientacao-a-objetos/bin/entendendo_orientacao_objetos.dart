@@ -1,3 +1,8 @@
+import 'package:entendendo_a_orientacao_a_objetos/citricas.dart';
+import 'package:entendendo_a_orientacao_a_objetos/fruta.dart';
+import 'package:entendendo_a_orientacao_a_objetos/legume.dart';
+import 'package:entendendo_a_orientacao_a_objetos/nozes.dart';
+
 void main() {
   String nomeFruta = "Laranja";
   double pesoFruta = 100.2;
@@ -22,6 +27,19 @@ void main() {
 
   Fruta uva = Fruta("Uva", 500.0, "Roxa", "Azedo", 40);
   uva.estaMadura(30);
+
+  Legume legume1 = Legume("Macaxeira", 1200, "Marrom", true);
+  Fruta fruta1 = Fruta("Banana", 75, "Amarela", "Doce",12);
+  Nozes noz1 = Nozes("Amendoim", 3.5, "Marrom", "Amargo", 130, 17);
+  Citricas citrica1 = Citricas("Laranja", 200, "Laranja", "Doce", 20, 7);
+
+  legume1.printAlimento();
+  fruta1.printAlimento();
+  noz1.printAlimento();
+  citrica1.printAlimento();
+  legume1.cozinhar(); // Funciona
+  fruta1.fazerSuco(); // Funciona!
+
 }
 
 // Posicionais Obrigatórios
@@ -69,25 +87,4 @@ String toString({required String nome, required double peso, required int diasDe
       "Ela foi colhida há $diasDesdeColheita dias e vai precisar de "
       "$diasParaMadura dias para amadurecer, logo a $nome $estaMadura!");
   return fraseFruta;
-}
-
-class Fruta {
-  String nome;
-  double peso;
-  String cor;
-  String sabor;
-  int diasDesdeColheita;
-  bool? isMadura;
-
-  Fruta(this.nome, this.peso, this.cor, this.sabor, this.diasDesdeColheita,
-      {this.isMadura});
-
-  void estaMadura(int diasParaMadura) {
-    isMadura = diasDesdeColheita >= diasParaMadura;
-    print(
-        "A sua $nome foi colhida há $diasDesdeColheita dias e precisa de"
-        " $diasParaMadura dias para ser consumida!"
-        " Ela está madura? $isMadura"
-    );
-  }
 }
